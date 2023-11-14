@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  primary:
+    adapter: postgresql
+    encoding: unicode
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+    username: aliraza
+    password: 12345
+    host: localhost
+    port: 5432
+    database: twitter_development
+  primary_replica:
+    <<: *default
+    username: aliraza
+    password: 12345
+    host: localhost
+    port: 5433
+    database: twitter_development
